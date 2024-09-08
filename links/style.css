@@ -22,7 +22,7 @@
 }
 
 header {
-    background-image: linear-gradient(to bottom, var(--cor3), var(--cor5));
+    background-image: linear-gradient(to bottom, var(--cor2), var(--cor4));
     display: flex;
     flex-wrap: wrap;
     min-height: 150px;
@@ -33,12 +33,12 @@ header {
 
 header h1 {
     margin: 5px auto;
-    color: var(--cor0);
+    color: white;
     text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.642);
 }
 
 header p {
-    color: var(--cor0);
+    color: whitesmoke;
     text-align: justify;
     text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.642);
     font-size: 1.2em;
