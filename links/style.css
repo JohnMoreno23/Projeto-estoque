@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root {
+    --cor0: #c5ebd6;
+    --cor1: #83e1ad;
+    --cor2: #3ddc84;
+    --cor3: #2fa866;
+    --cor4: #1a5c37;
+    --cor5: #063d1e;
+
+    --fonte-padrao: Arial, Verdana, Helvetica, sans-serif;
+    --font-destaque: ;
+}
+
+/* missão hj criar o header */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Ubuntu", sans-serif;
+}
+
+header {
+    background-image: linear-gradient(to bottom, var(--cor3), var(--cor5));
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 150px;
+    padding: 30px 60px;
+    border-radius: 0 0 40px 40px;
+    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.615)
+}
+
+header h1 {
+    margin: 5px auto;
+    color: var(--cor0);
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.642);
+}
+
+header p {
+    color: var(--cor0);
+    text-align: justify;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.642);
+    font-size: 1.2em;
+    padding: 10px;
+}
+
+header nav{
+    margin-top: 30px;
+    font-weight: bolder;
+}
+
+.navBar a{
+    text-decoration: none;
+    padding: 10px 20px;
+    color: whitesmoke;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.642);
+}
+
+.navBar a:hover{
+    background-color: var(--cor2);
+    border-radius: 30px;
+    text-shadow: 0;
+}
+
+
+
+body {
+    background-color: var(--cor0);
+    font-family: var(--fonte-padrao);
+}
+
+/* Edição do header finalizada aqui */
+
+main{
+    background-color: white;
+    margin: 0px auto 20px;
+    min-width: 300px;
+    max-width: 800px;
+    border-radius: 5px;
+    box-shadow: 0px 7px 7px rgba(0, 0, 0, 0.615)
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.table1{
+    width: 50%;
+    margin: 20px 0;
+    padding: 10px;
+}
+
+.table2{
+    width: 50%;
+    margin: 20px 0;
+    padding: 10px;
+}
+
+.table3{
+    width: 50%;
+    margin: 40px 0;
+    padding: 10px;
+}
+.table4{
+    width: 50%;
+    margin: 40px 0;
+    padding: 10px;
+}
+
+.table5{
+    width: 90%;
+    margin: 40px 0;
+    padding: 10px;
+}
+
+.ttTable th{
+    border: 4px solid;
+    border-radius: 20px;
+}
+
+.ttTable th, td{
+    padding: 5px 3px;
+    text-align: center;
+}
+
+
+.ttTable2 th, td{
+    padding: 5px 3px;
+    text-align: center;
+}
+
+.tst{
+    margin-bottom: 20px;
+}
+
+/* footer */
+
+footer{
+    background-color: var(--cor5);
+    color: white;
+    text-align: center;
+    font-size: 1em;
+    padding: 10px;
+}
