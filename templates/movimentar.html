@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movimentar Estoque</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body>
+    <h1>Movimentar Estoque</h1>
+
+    <form action="/movimentar" method="POST">
+        <label for="modelo">Modelo:</label>
+        <input type="text" id="modelo" name="modelo" required><br><br>
+        <label for="quantidade">Quantidade:</label>
+        <input type="number" id="quantidade" name="quantidade" required><br><br>
+        <label for="tipo">Tipo:</label>
+        <select id="tipo" name="tipo">
+            <option value="entrada">Entrada</option>
+            <option value="saida">Saída</option>
+        </select><br><br>
+        <input type="submit" value="Atualizar Estoque">
+    </form>
+
+    <a href="/">Voltar ao estoque</a>
+</body>
+
+</html>

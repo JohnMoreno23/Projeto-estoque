@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Notebook</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body>
+    <h1>Cadastro de Notebook</h1>
+    <form method="POST" action="/">
+        <label for="modelo">Modelo do Notebook:</label>
+        <input type="text" id="modelo" name="modelo" required><br><br>
+
+        <label for="quantidade">Quantidade:</label>
+        <input type="number" id="quantidade" name="quantidade" required><br><br>
+
+        <label for="tipo">Entrada ou Saída:</label>
+        <select id="tipo" name="tipo" required>
+            <option value="entrada">Entrada</option>
+            <option value="saida">Saída</option>
+        </select><br><br>
+
+        <label for="data">Data:</label>
+        <input type="date" id="data" name="data" required><br><br>
+
+        <label for="colaborador">Nome do Colaborador:</label>
+        <input type="text" id="colaborador" name="colaborador" required><br><br>
+
+        <label for="setor">Setor/Área:</label>
+        <input type="text" id="setor" name="setor" required><br><br>
+
+        <label for="motivo">Motivo:</label><br>
+        <textarea id="motivo" name="motivo" rows="4" cols="50" required></textarea><br><br>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+</body>
+
+</html>

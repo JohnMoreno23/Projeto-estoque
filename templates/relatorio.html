@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estoque de Notebooks</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body>
+
+    <div class="voltar-inicio">
+        <a href="{{ url_for('estoque_view') }}" class="btn btn-secondary mt-3">Voltar para Estoque</a>
+    </div>
+<div class="container">
+    <h1 class="my-4">Gerar Relatório de Movimentação</h1>
+    <form action="/relatorio" method="POST">
+        <label for="data_inicio">Data de Início:</label>
+        <input type="date" id="data_inicio" name="data_inicio"><br><br>
+
+        <label for="data_fim">Data de Fim:</label>
+        <input type="date" id="data_fim" name="data_fim"><br><br>
+
+        <button type="submit" class="btn btn-primary">Gerar Relatório</button>
+    </form>
+
+</div>
+
+</body>
+</html>

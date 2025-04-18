@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estoque de Notebooks</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body>
+    <h1>Estoque de Materiais de TI - GS</h1>
+
+    {% if mensagem %}
+    <div style="color: green;">{{ mensagem }}</div>
+    {% endif %}
+
+    {% if erro %}
+    <div style="color: red;">{{ erro }}</div>
+    {% endif %}
+
+    <nav class="nav-bar">
+        <a href="estoque.html">Início</a>
+        <a href="#cadastro" onclick="document.getElementById('cadastro-form').style.display='block';">Cadastrar Novo Notebook</a>
+        <a href="#entrada" onclick="document.getElementById('entrada-form').style.display='block';">Entrada de Notebook</a>
+        <a href="#saida" onclick="document.getElementById('saida-form').style.display='block';">Saída de Notebook</a>
+        <a href="#cadastro-outros" onclick="document.getElementById('cadastro-outros').style.display='block';">Cadastrar Outros Equipamentos</a>
+        <a href="#saida-outros" onclick="document.getElementById('saida-outros').style.display='block';">Saída de Outros Equipamentos</a>
+        <a href="{{ url_for('gerar_relatorio_csv') }}" class="btn btn-primary" style="margin-bottom: 20px;">Relatórios</a>
+
+        <br><br>
+    </nav>
+    <h2>Estoque de Notebooks</h2>
+
+    <!-- Tabela de Estoque -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Modelo</th>
+                <th>Quantidade</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in itens %}
+            <tr>
+                <td>{{ item.modelo }}</td>
+                <td>{{ item.quantidade }}</td>
+                <td>{{ item.estado }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3">Nenhum item cadastrado.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br><br>
+
+    <h2>Outros Equipamentos</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Quantidade</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in outros_itens %}
+        <tr>
+            <td>{{ item.nome }}</td>
+            <td>{{ item.quantidade }}</td>
+            <td>{{ item.estado }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="3">Nenhum item cadastrado.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+    <!-- Botões de Ações -->
+    <br>
+
+    <!-- Formulário de Cadastro de Novo Notebook -->
+    <div id="cadastro-form" style="display:none;">
+        <h2>Cadastrar Novo Notebook</h2>
+        <form action="/cadastro" method="POST">
+            <label for="modelo">Modelo:</label>
+            <input type="text" id="modelo" name="modelo" required><br><br>
+
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" name="quantidade" required><br><br>
+
+            <label for="data">Data:</label>
+            <input type="date" id="data" name="data" required><br><br>
+
+            <input type="submit" value="Adicionar Novo Notebook">
+        </form>
+    </div>
+
+    <!-- Formulário de Entrada de Notebook -->
+    <div id="entrada-form" style="display:none;">
+        <h2>Entrada de Notebook</h2>
+        <form action="{{ url_for('entrada_notebook') }}" method="POST">
+            <label for="modelo">Modelo:</label>
+            <input type="text" id="modelo" name="modelo" required><br><br>
+
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" name="quantidade" required><br><br>
+
+            <label for="estado">Estado:</label>
+            <select id="estado" name="estado">
+                <option value="novo">Novo</option>
+                <option value="usado">Usado</option>
+            </select><br><br>
+
+            <label for="numero_serie">Número de Série:</label>
+            <input type="text" id="numero_serie" name="numero_serie" required><br><br>
+
+            <label for="colaborador">Colaborador:</label>
+            <input type="text" id="colaborador" name="colaborador" required><br><br>
+
+            <label for="motivo_entrada">Motivo da Entrada:</label>
+            <input type="text" id="motivo_entrada" name="motivo_entrada" required><br><br>
+
+            <label for="setor">Setor:</label>
+            <input type="text" id="setor" name="setor" required><br><br>
+
+            <label for="data">Data:</label>
+            <input type="date" id="data" name="data" required><br><br>
+
+            <button type="submit">Registrar Entrada</button>
+        </form>
+    </div>
+
+    <!-- Formulário de Saída de Notebook -->
+    <div id="saida-form" style="display:none;">
+        <h2>Saída de Notebook</h2>
+        <form action="{{ url_for('saida_notebook') }}" method="POST">
+            <label for="modelo">Modelo:</label>
+            <input type="text" id="modelo" name="modelo" required><br><br>
+
+            <label for="estado">Estado:</label>
+            <select id="estado" name="estado">
+                <option value="novo">Novo</option>
+                <option value="usado">Usado</option>
+            </select><br><br>
+
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" name="quantidade" required><br><br>
+
+            <label for="numero_serie">Número de Série:</label>
+            <input type="text" id="numero_serie" name="numero_serie" required><br><br>
+
+            <label for="colaborador">Colaborador:</label>
+            <input type="text" id="colaborador" name="colaborador" required><br><br>
+
+            <label for="motivo_saida">Motivo da Saída:</label>
+            <input type="text" id="motivo_saida" name="motivo_saida" required><br><br>
+
+            <label for="setor">Setor:</label>
+            <input type="text" id="setor" name="setor" required><br><br>
+
+            <label for="data">Data:</label>
+            <input type="date" id="data" name="data" required><br><br>
+
+            <button type="submit">Registrar Saída</button>
+        </form>
+    </div>
+
+    <div id="cadastro-outros" style="display:none;" class="entradaEsaida-outros">
+        <h2>Cadastrar Outros Equipamentos</h2>
+        <form action="/cadastro_outros" method="POST">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required><br><br>
+    
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" name="quantidade" required><br><br>
+    
+            <label for="estado">Estado:</label>
+            <select id="estado" name="estado">
+                <option value="novo">Novo</option>
+                <option value="usado">Usado</option>
+            </select><br><br>
+    
+            <label for="data">Data:</label>
+            <input type="date" id="data" name="data" required><br><br>
+    
+            <button type="submit">Adicionar Equipamento</button>
+        </form>
+    </div>
+
+    <div id="saida-outros" style="display:none;" class="entradaEsaida-outros">
+        <h2>Saída de Outros Equipamentos</h2>
+        <form action="/saida_outros" method="POST">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required><br><br>
+    
+            <label for="estado">Estado:</label>
+            <select id="estado" name="estado">
+                <option value="novo">Novo</option>
+                <option value="usado">Usado</option>
+            </select><br><br>
+    
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" name="quantidade" required><br><br>
+    
+            <label for="numero_serie">Número de Série:</label>
+            <input type="text" id="numero_serie" name="numero_serie" required><br><br>
+    
+            <label for="colaborador">Colaborador:</label>
+            <input type="text" id="colaborador" name="colaborador" required><br><br>
+    
+            <label for="motivo_saida">Motivo da Saída:</label>
+            <input type="text" id="motivo_saida" name="motivo_saida" required><br><br>
+    
+            <label for="setor">Setor:</label>
+            <input type="text" id="setor" name="setor" required><br><br>
+    
+            <label for="data">Data:</label>
+            <input type="date" id="data" name="data" required><br><br>
+    
+            <button type="submit">Registrar Saída</button>
+        </form>
+    </div>
+    
+</body>
+
+</html>

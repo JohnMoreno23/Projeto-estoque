@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Novo Notebook</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body>
+    <h1>Cadastrar Novo Notebook</h1>
+
+    <form action="/adicionar" method="POST">
+        <label for="modelo">Modelo:</label>
+        <input type="text" id="modelo" name="modelo" required><br><br>
+        <label for="quantidade">Quantidade:</label>
+        <input type="number" id="quantidade" name="quantidade" required><br><br>
+        <label for="tipo">Tipo:</label>
+        <input type="text" id="tipo" name="tipo" required><br><br>
+        <label for="data">Data:</label>
+        <input type="date" id="data" name="data" required><br><br>
+        <label for="colaborador">Colaborador:</label>
+        <input type="text" id="colaborador" name="colaborador" required><br><br>
+        <label for="setor">Setor:</label>
+        <input type="text" id="setor" name="setor" required><br><br>
+        <label for="motivo">Motivo:</label>
+        <input type="text" id="motivo" name="motivo" required><br><br>
+        <input type="submit" value="Cadastrar">
+    </form>
+
+    <a href="/">Voltar ao estoque</a>
+</body>
+
+</html>
